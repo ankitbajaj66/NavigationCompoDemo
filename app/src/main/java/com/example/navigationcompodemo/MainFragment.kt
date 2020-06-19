@@ -32,16 +32,16 @@ class MainFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         view_transactions_btn.setOnClickListener {
-
+            navController.navigate(R.id.action_mainFragment_to_viewTransactionFragment)
         }
 
         send_money_btn.setOnClickListener {
-
+            navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
 
         view_balance_btn.setOnClickListener {
-
+            navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment)
         }
     }
 
