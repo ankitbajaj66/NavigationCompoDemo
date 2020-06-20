@@ -39,6 +39,8 @@
         android:name="com.example.navigationcompodemo.SpecifyAmountFragment"
         android:label="fragment_specify_amount"
         tools:layout="@layout/fragment_specify_amount">
+
+
         <action
             android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
             app:destination="@id/confirmationFragment"
@@ -46,6 +48,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="recipient"
+            android:defaultValue="None" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -74,5 +79,12 @@
         android:id="@+id/confirmationFragment"
         android:name="com.example.navigationcompodemo.ConfirmationFragment"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation" >
+        <argument
+            android:name="recipient"
+            android:defaultValue="None" />
+        <argument
+            android:name="money"
+            app:argType="com.example.navigationcompodemo.Money" />
+    </fragment>
 </navigation>
