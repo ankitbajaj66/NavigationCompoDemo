@@ -26,7 +26,11 @@ class SpecifyAmountFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        recipientData = arguments!!.getString("recipientData")!!
+        // Retriving data using Safe Args
+        recipientData = SpecifyAmountFragmentArgs.fromBundle(arguments!!).recipient
+
+        /* // Retriving data using normal way
+        recipientData = arguments!!.getString("recipientData")!!*/
     }
 
     override fun onCreateView(
@@ -47,11 +51,15 @@ class SpecifyAmountFragment : Fragment() {
         send_btn.setOnClickListener {
             if (!TextUtils.isEmpty(input_amount.text.toString())) {
                 val money = Money(BigDecimal(input_amount.text.toString()))
+                val action = SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(recipientData, money)
+                navController.navigate(action)
+
+                /*val money = Money(BigDecimal(input_amount.text.toString()))
                 val bundle = bundleOf("recipient" to recipientData, "amount" to money)
                 navController.navigate(
                     R.id.action_specifyAmountFragment_to_confirmationFragment,
                     bundle
-                )
+                )*/
             } else {
                 Toast.makeText(activity, "Enter an amount", Toast.LENGTH_LONG).show()
             }

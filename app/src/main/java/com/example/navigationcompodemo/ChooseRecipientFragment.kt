@@ -35,11 +35,20 @@ class ChooseRecipientFragment : Fragment() {
 
         next_btn.setOnClickListener {
             if (!TextUtils.isEmpty(input_recipient.text.toString())) {
+
+                // Safe Arg Way - compile time this will check passed parameter
+                val action =
+                    ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(
+                        input_recipient.text.toString()
+                    )
+                navController.navigate(action)
+
+                /*// Without Safe Arg - it will not check passed value at compile time
                 val bundle = bundleOf("recipientData" to input_recipient.text.toString())
                 navController.navigate(
                     R.id.action_chooseRecipientFragment_to_specifyAmountFragment,
                     bundle
-                )
+                )*/
             } else {
                 Toast.makeText(activity, "Enter a recipient", Toast.LENGTH_LONG).show()
             }

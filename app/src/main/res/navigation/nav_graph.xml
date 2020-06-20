@@ -50,7 +50,7 @@
             app:popExitAnim="@anim/slide_out_right"/>
         <argument
             android:name="recipient"
-            android:defaultValue="None" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/chooseRecipientFragment"
@@ -82,7 +82,7 @@
         tools:layout="@layout/fragment_confirmation" >
         <argument
             android:name="recipient"
-            android:defaultValue="None" />
+            app:argType="string" />
         <argument
             android:name="money"
             app:argType="com.example.navigationcompodemo.Money" />

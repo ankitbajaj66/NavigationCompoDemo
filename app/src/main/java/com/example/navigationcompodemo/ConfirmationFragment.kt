@@ -18,8 +18,14 @@ class ConfirmationFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        recipient = arguments!!.getString("recipient")!!
-        money = arguments!!.getParcelable("amount")!!
+
+        // Retriving data using Safe Args
+        recipient = ConfirmationFragmentArgs.fromBundle(arguments!!).recipient
+        money = ConfirmationFragmentArgs.fromBundle(arguments!!).money
+
+        /* // Retriving data using normal way
+         recipient = arguments!!.getString("recipient")!!
+         money = arguments!!.getParcelable("amount")!!*/
     }
 
     override fun onCreateView(
