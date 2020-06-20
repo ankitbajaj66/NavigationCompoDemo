@@ -20,8 +20,9 @@ class ConfirmationFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         // Retriving data using Safe Args
-        recipient = ConfirmationFragmentArgs.fromBundle(arguments!!).recipient
-        money = ConfirmationFragmentArgs.fromBundle(arguments!!).money
+        val args = ConfirmationFragmentArgs.fromBundle(arguments!!)
+        recipient = args.recipient
+        money = args.money
 
         /* // Retriving data using normal way
          recipient = arguments!!.getString("recipient")!!
