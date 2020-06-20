@@ -41,5 +41,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <Button
+        android:text="Navigation Drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_drawer"
+        app:layout_constraintTop_toBottomOf="@+id/view_balance_btn"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

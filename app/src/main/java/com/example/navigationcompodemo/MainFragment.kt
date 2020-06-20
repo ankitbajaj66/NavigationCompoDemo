@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
@@ -41,14 +42,22 @@ class MainFragment : Fragment() {
 
             // This can be done if we dont want to do it in nav_graph on that action
             val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainFragment, true).build()
-            navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment, null, navOptions)
+            navController.navigate(
+                R.id.action_mainFragment_to_chooseRecipientFragment,
+                null,
+                navOptions
+            )
 
-            navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+           // navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
 
         view_balance_btn.setOnClickListener {
             navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment)
+        }
+
+        nav_drawer.setOnClickListener {
+            Toast.makeText(activity, "Navigation Drawer coming soon", Toast.LENGTH_LONG).show()
         }
     }
 
