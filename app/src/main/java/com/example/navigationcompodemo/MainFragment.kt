@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -28,6 +29,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         // This is the nav Controller which has ref to Nav Graph
         navController = Navigation.findNavController(view)
 
@@ -36,6 +38,11 @@ class MainFragment : Fragment() {
         }
 
         send_money_btn.setOnClickListener {
+
+            // This can be done if we dont want to do it in nav_graph on that action
+            val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainFragment, true).build()
+            navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment, null, navOptions)
+
             navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
