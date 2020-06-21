@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_camera_alt_black_24dp"
@@ -14,18 +15,33 @@
             android:title="SlideShow" />
     </group>
 
-    <item android:title="Communicate">
+
+    <!--<group android:id="@+id/grp2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_black_24dp"
+            android:title="Slide Share" />
+
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_send_black_24dp"
+            android:title="Slide Send" />
+    </group>-->
+    <item android:id="@+id/grp2" android:checkable="true" android:title="Communicate">
 
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share_black_24dp"
-                android:title="SlideShow" />
+                android:checkable="true"
+                android:title="Slide Share" />
 
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_send_black_24dp"
-                android:title="SlideShow" />
+                android:checkable="true"
+                android:title="Slide Send" />
         </menu>
     </item>
 </menu>
