@@ -1,4 +1,4 @@
-package com.example.navgraphnesting
+package com.example.navgraphnesting.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -48,7 +48,7 @@ class MainFragment : Fragment() {
                 navOptions
             )
 
-           // navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+           // authNavController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
 

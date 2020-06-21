@@ -56,7 +56,7 @@ class SpecifyAmountFragment : Fragment() {
 
                 /*val money = Money(BigDecimal(input_amount.text.toString()))
                 val bundle = bundleOf("recipient" to recipientData, "amount" to money)
-                navController.navigate(
+                authNavController.navigate(
                     R.id.action_specifyAmountFragment_to_confirmationFragment,
                     bundle
                 )*/

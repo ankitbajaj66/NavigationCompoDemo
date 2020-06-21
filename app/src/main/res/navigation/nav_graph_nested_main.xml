@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_nav_graph_main"
+    app:startDestination="@id/authenticationFragment">
+
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.example.navgraphnesting.authentication.AuthenticationFragment"
+        android:label="fragment_authentication"
+        tools:layout="@layout/fragment_authentication">
+
+        <action
+            android:id="@+id/action_authenticationFragment_to_flow1Fragment"
+            app:destination="@id/flow1Fragment" />
+
+        <action
+            android:id="@+id/action_authenticationFragment_to_flow2Fragment"
+            app:destination="@id/flow2Fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/flow1Fragment"
+        android:name="com.example.navgraphnesting.flow1.Flow1Fragment"
+        android:label="fragment_flow1"
+        tools:layout="@layout/fragment_flow1" />
+    <fragment
+        android:id="@+id/flow2Fragment"
+        android:name="com.example.navgraphnesting.flow2.Flow2Fragment"
+        android:label="fragment_flow2"
+        tools:layout="@layout/fragment_flow2" />
+</navigation>

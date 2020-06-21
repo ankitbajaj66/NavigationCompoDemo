@@ -1,4 +1,4 @@
-package com.example.navgraphnesting.main
+package com.example.navgraphnesting.authentication
 
 
 import android.os.Bundle
@@ -12,14 +12,14 @@ import com.example.navigationcompodemo.R
 /**
  * A simple [Fragment] subclass.
  */
-class Flow2Fragment : Fragment() {
+class AuthenticationFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_flow2, container, false)
+        return inflater.inflate(R.layout.fragment_authentication, container, false)
     }
 
 

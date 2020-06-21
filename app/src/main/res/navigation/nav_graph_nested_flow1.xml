@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_nested_flow1"
+    app:startDestination="@id/flow1Screen1Fragment">
+
+    <fragment
+        android:id="@+id/flow1Screen1Fragment"
+        android:name="com.example.navgraphnesting.flow1.Flow1Screen1Fragment"
+        android:label="fragment_flow1_screen2"
+        tools:layout="@layout/fragment_flow1_screen2" >
+        <action
+            android:id="@+id/action_flow1Screen1Fragment_to_flow1Screen2Fragment2"
+            app:destination="@id/flow1Screen2Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow1Screen2Fragment"
+        android:name="com.example.navgraphnesting.flow1.Flow1Screen2Fragment"
+        android:label="fragment_flow1_screen2"
+        tools:layout="@layout/fragment_flow1_screen2" />
+</navigation>

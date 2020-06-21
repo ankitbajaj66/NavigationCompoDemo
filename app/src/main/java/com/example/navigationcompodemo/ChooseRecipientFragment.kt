@@ -47,7 +47,7 @@ class ChooseRecipientFragment : Fragment() {
 
                 /*// Without Safe Arg - it will not check passed value at compile time
                 val bundle = bundleOf("recipientData" to input_recipient.text.toString())
-                navController.navigate(
+                authNavController.navigate(
                     R.id.action_chooseRecipientFragment_to_specifyAmountFragment,
                     bundle
                 )*/
