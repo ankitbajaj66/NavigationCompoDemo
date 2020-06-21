@@ -21,6 +21,7 @@ class NavigationDrawerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_navigation_drawer)
 
         setSupportActionBar(toolbar)
+
         navController = findNavController(R.id.nav_host_fragment)
 
 
@@ -37,7 +38,8 @@ class NavigationDrawerActivity : AppCompatActivity() {
 //        )
 
         // This will take care showing 3 bars and arrow when drawer is open
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
 
         nav_view.setupWithNavController(navController)
         bottom_nav.setupWithNavController(navController)
