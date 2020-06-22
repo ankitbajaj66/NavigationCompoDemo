@@ -44,7 +44,7 @@ class AccountNavigationTest {
         // ============================================================================================
 
 
-        // perform click to move to Transaction Fragment
+        // perform click to move to Send money flow
         onView(withId(R.id.send_money_btn)).perform(click())
         // ============================== Load ChooseRecipientFragment ==========================
 
@@ -56,7 +56,7 @@ class AccountNavigationTest {
         //===============================================================================================
 
         // perform next click to move to Specify amount fragment
-        onView(withId(R.id.view_transactions_btn)).perform(click())
+        onView(withId(R.id.next_btn)).perform(click())
 
         // ============================== Load Specifyamountfragment ==========================
         // Check for main fragment content
