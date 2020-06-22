@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainFragment"
-    android:id="@+id/parentLayout">
+    android:id="@+id/main_fragmentcontainer">
 
     <Button
         android:text="View transactions"
