@@ -20,8 +20,11 @@ class AccountNavigationTest {
     @Test
     fun test_ViewTransactionFragmentNavigation() {
 
-// After launching the activity first fragment which is mainfragment will be loaded
+        // After launching the activity first fragment which is mainfragment will be loaded
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        // verify current view
+        onView(withId(R.id.main_fragmentcontainer)).check(matches(isDisplayed()))
 
         // perform click to move to Transaction Fragment
         onView(withId(R.id.view_transactions_btn)).perform(click())
