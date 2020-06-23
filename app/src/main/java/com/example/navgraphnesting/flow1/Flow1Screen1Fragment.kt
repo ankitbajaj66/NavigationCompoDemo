@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_flow1_screen1.*
 /**
  * A simple [Fragment] subclass.
  */
-class Flow1Screen1Fragment : Fragment() {
+open class Flow1Screen1Fragment : Fragment() {
 
     lateinit var navController: NavController
 
@@ -34,7 +34,9 @@ class Flow1Screen1Fragment : Fragment() {
 
 
         btn_move_to_screen2.setOnClickListener {
-            navController.navigate(R.id.action_flow1Screen1Fragment_to_flow1Screen2Fragment2)
+            val directions = Flow1Screen1FragmentDirections.actionFlow1Screen1FragmentToFlow1Screen2Fragment2("Ankit")
+//            navController.navigate(R.id.action_flow1Screen1Fragment_to_flow1Screen2Fragment2)
+            navController.navigate(directions)
         }
     }
 

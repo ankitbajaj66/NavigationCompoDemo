@@ -18,6 +18,7 @@ class ViewTransactionFragmentTest {
     fun testViewTransactionFragment() {
         val scenario = launchFragmentInContainer<ViewTransactionFragment>()
 
+
         // verify current view
         Espresso.onView(ViewMatchers.withId(R.id.view_transaction_container))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))

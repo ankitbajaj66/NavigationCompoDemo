@@ -27,7 +27,7 @@ class SpecifyAmountFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         // Retriving data using Safe Args
-        recipientData = SpecifyAmountFragmentArgs.fromBundle(arguments!!).recipient
+        recipientData = SpecifyAmountFragmentArgs.fromBundle(requireArguments()).recipient
 
         /* // Retriving data using normal way
         recipientData = arguments!!.getString("recipientData")!!*/
@@ -66,7 +66,7 @@ class SpecifyAmountFragment : Fragment() {
         }
 
         cancel_btn.setOnClickListener {
-            activity!!.onBackPressed()
+            requireActivity().onBackPressed()
         }
     }
 

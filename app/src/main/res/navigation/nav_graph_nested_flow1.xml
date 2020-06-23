@@ -19,5 +19,9 @@
         android:id="@+id/flow1Screen2Fragment"
         android:name="com.example.navgraphnesting.flow1.Flow1Screen2Fragment"
         android:label="fragment_flow1_screen2"
-        tools:layout="@layout/fragment_flow1_screen2" />
+        tools:layout="@layout/fragment_flow1_screen2" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -1,37 +1,41 @@
-package com.example.navigationcompodemo
+package com.example.navgraphnesting.flow1
 
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
+
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import com.example.navgraphnesting.flow1.Flow1Screen1Fragment
+import com.example.navigationcompodemo.R
+import io.mockk.mockk
+import io.mockk.verify
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Created by Ankit Bajaj on 22-06-2020.
- */
 @RunWith(AndroidJUnit4ClassRunner::class)
-class MainFragmentTest{
+class Flow1Screen1FragmentTest {
 
     @Test
-    fun test_MainFragmentVisible() {
+    fun testViewMove_to_screen2_Onclick() {
 
-        //val scenario = launchFragmentInContainer<MainFragment>()
-
-        //  Create a TestNavHostController
+       //  Create a TestNavHostController
         val navController = TestNavHostController(
             ApplicationProvider.getApplicationContext())
-        navController.setGraph(R.navigation.nav_graph)
+        navController.setGraph(R.navigation.nav_graph_nested_flow1)
+
 
         val scenario = launchFragmentInContainer {
-            MainFragment().also { fragment ->
+            Flow1Screen1Fragment().also { fragment ->
 
                 // In addition to returning a new instance of our Fragment,
                 // get a callback whenever the fragment’s view is created
@@ -45,7 +49,9 @@ class MainFragmentTest{
             }
         }
 
-        Espresso.onView(ViewMatchers.withId(R.id.main_fragmentcontainer))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Verify that performing a click changes the NavController’s state
+        onView(ViewMatchers.withId(R.id.btn_move_to_screen2)).perform(click())
+        assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
     }
 }

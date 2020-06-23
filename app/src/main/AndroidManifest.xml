@@ -12,8 +12,10 @@
         <activity android:name="com.example.navigationdrawer.NavigationDrawerActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
+
         </activity>
-        <activity android:name="com.example.navgraphnesting.main.NavGraphNestingActivityDemo">
+        <activity android:name="com.example.navgraphnesting.main.NavGraphNestingActivityDemo"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity android:name=".MainActivity">
