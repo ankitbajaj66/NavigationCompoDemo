@@ -53,6 +53,7 @@ class AccountNavigationTest {
 
         // set data on recipient field
         onView(withId(R.id.input_recipient)).perform(typeText("Ankit Bajaj"))
+
         //===============================================================================================
 
         // perform next click to move to Specify amount fragment

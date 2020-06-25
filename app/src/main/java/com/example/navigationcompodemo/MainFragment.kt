@@ -43,14 +43,14 @@ class MainFragment : Fragment() {
         send_money_btn.setOnClickListener {
 
             // This can be done if we dont want to do it in nav_graph on that action
-            val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainFragment, true).build()
-            navController.navigate(
-                R.id.action_mainFragment_to_chooseRecipientFragment,
-                null,
-                navOptions
-            )
+//            val navOptions = NavOptions.Builder().setPopUpTo(R.id.mainFragment, true).build()
+//            navController.navigate(
+//                R.id.action_mainFragment_to_chooseRecipientFragment,
+//                null,
+//                navOptions
+//            )
 
-            // authNavController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+             navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
         // View balance

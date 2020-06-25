@@ -52,6 +52,12 @@ class Flow1Screen1FragmentTest {
 
         // Verify that performing a click changes the NavController’s state
         onView(ViewMatchers.withId(R.id.btn_move_to_screen2)).perform(click())
-        assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
+       // assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
+
+        onView(ViewMatchers.withId(R.id.flow1_screen2_container)).check(
+            ViewAssertions.matches(
+                ViewMatchers.isDisplayed()
+            )
+        )
     }
 }

@@ -1,6 +1,7 @@
 package com.example.navigationcompodemo
 
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
@@ -9,11 +10,16 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import com.example.navgraphnesting.flow1.Flow1Screen1Fragment
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.android.synthetic.main.fragment_main.*
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnit
+
 
 /**
  * Created by Ankit Bajaj on 22-06-2020.
@@ -27,9 +33,11 @@ class MainFragmentTest{
         //val scenario = launchFragmentInContainer<MainFragment>()
 
         //  Create a TestNavHostController
-        val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
-        navController.setGraph(R.navigation.nav_graph)
+//        val navController = TestNavHostController(
+//            ApplicationProvider.getApplicationContext())
+//        navController.setGraph(R.navigation.nav_graph)
+
+        val navController = mockk<NavController>(relaxed = true)
 
         val scenario = launchFragmentInContainer {
             MainFragment().also { fragment ->
@@ -50,10 +58,22 @@ class MainFragmentTest{
         Espresso.onView(ViewMatchers.withId(R.id.main_fragmentcontainer))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
-        // Perform the click event
+
+        // launch View Transaction Fragment
         Espresso.onView(ViewMatchers.withId(R.id.view_transactions_btn)).perform(ViewActions.click())
 
-        // Verify the screen transition
-        assertEquals(navController.currentDestination?.id, R.id.viewTransactionFragment)
+        verify(exactly = 1) { navController.navigate(R.id.action_mainFragment_to_viewTransactionFragment) }
+
+
+        // launch Send Money Fragment
+        Espresso.onView(ViewMatchers.withId(R.id.send_money_btn)).perform(ViewActions.click())
+
+        verify(exactly = 1) { navController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment) }
+
+        // launch View balance Fragment
+        Espresso.onView(ViewMatchers.withId(R.id.view_balance_btn)).perform(ViewActions.click())
+
+        verify(exactly = 1) { navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment) }
+
     }
 }

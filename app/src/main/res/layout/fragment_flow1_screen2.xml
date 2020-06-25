@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/flow1_screen2_container"
     tools:context="com.example.navgraphnesting.flow1.Flow1Screen2Fragment">
 
     <TextView
