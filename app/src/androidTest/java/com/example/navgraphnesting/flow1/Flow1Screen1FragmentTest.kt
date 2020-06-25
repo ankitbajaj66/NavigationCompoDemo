@@ -3,22 +3,14 @@ package com.example.navgraphnesting.flow1
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.testing.TestNavHostController
-import androidx.test.core.app.ApplicationProvider
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navigationcompodemo.R
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -28,11 +20,8 @@ class Flow1Screen1FragmentTest {
     @Test
     fun testViewMove_to_screen2_Onclick() {
 
-       //  Create a TestNavHostController
-        val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
-        navController.setGraph(R.navigation.nav_graph_nested_flow1)
-
+        //  Create a TestNavHostController
+        val navController = mockk<NavController>(relaxed = true)
 
         val scenario = launchFragmentInContainer {
             Flow1Screen1Fragment().also { fragment ->
@@ -52,12 +41,11 @@ class Flow1Screen1FragmentTest {
 
         // Verify that performing a click changes the NavController’s state
         onView(ViewMatchers.withId(R.id.btn_move_to_screen2)).perform(click())
-       // assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
+        // assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
 
-        onView(ViewMatchers.withId(R.id.flow1_screen2_container)).check(
-            ViewAssertions.matches(
-                ViewMatchers.isDisplayed()
-            )
-        )
+        val action =
+            Flow1Screen1FragmentDirections.actionFlow1Screen1FragmentToFlow1Screen2Fragment2("Ankit")
+
+        verify(exactly = 1) { navController.navigate(action) }
     }
 }

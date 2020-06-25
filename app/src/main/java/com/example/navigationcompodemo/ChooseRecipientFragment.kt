@@ -57,7 +57,7 @@ class ChooseRecipientFragment : Fragment() {
         }
 
         cancel_btn.setOnClickListener {
-            activity!!.onBackPressed()
+            requireActivity().onBackPressed()
         }
 
     }

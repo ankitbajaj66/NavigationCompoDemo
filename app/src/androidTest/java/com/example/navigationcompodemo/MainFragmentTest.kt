@@ -17,8 +17,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnit
 
 
 /**
@@ -73,7 +71,7 @@ class MainFragmentTest{
         // launch View balance Fragment
         Espresso.onView(ViewMatchers.withId(R.id.view_balance_btn)).perform(ViewActions.click())
 
-        verify(exactly = 1) { navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment) }
+
 
     }
 }
