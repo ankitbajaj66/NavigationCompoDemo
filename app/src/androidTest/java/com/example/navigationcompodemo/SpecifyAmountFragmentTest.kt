@@ -24,15 +24,20 @@ class SpecifyAmountFragmentTest {
         val recipient = "Ankit"
 
         val direction =
-            ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(recipient)
-//        val scenario = launchFragmentInContainer<SpecifyAmountFragment>(direction.arguments)
+            ChooseRecipientFragmentDirections.actionChooseRecipientFragmentToSpecifyAmountFragment(
+                recipient
+            )
 
         //  Create a TestNavHostController
         val navController = TestNavHostController(
-            ApplicationProvider.getApplicationContext())
+            ApplicationProvider.getApplicationContext()
+        )
         navController.setGraph(R.navigation.nav_graph)
 
-        val scenario = launchFragmentInContainer(direction.arguments, themeResId = R.style.Theme_MaterialComponents){
+        val scenario = launchFragmentInContainer(
+            direction.arguments,
+            themeResId = R.style.Theme_MaterialComponents
+        ) {
             SpecifyAmountFragment().also { fragment ->
 
                 // In addition to returning a new instance of our Fragment,
@@ -46,9 +51,6 @@ class SpecifyAmountFragmentTest {
                 }
             }
         }
-
-//        val scenario = launchFragmentInContainer<SpecifyAmountFragment>(direction.arguments, themeResId = R.style.Theme_MaterialComponents)
-
 
         // verify current view
         Espresso.onView(ViewMatchers.withId(R.id.specifyamountfragment_container))

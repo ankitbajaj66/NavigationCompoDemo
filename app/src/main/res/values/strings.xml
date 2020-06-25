@@ -6,4 +6,5 @@
     <string name="nav_header_title">Hello</string>
     <string name="nav_header_subtitle">Ankit Bajaj</string>
     <string name="text_select_image_from_gallery">Select Image From Gallary</string>
+    <string name="text_launch_camera">launch Camera</string>
 </resources>

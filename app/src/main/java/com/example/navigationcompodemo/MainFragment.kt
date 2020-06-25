@@ -34,10 +34,12 @@ class MainFragment : Fragment() {
         // This is the nav Controller which has ref to Nav Graph
         navController = Navigation.findNavController(view)
 
+        // View Transaction
         view_transactions_btn.setOnClickListener {
             navController.navigate(R.id.action_mainFragment_to_viewTransactionFragment)
         }
 
+        // Send Money
         send_money_btn.setOnClickListener {
 
             // This can be done if we dont want to do it in nav_graph on that action
@@ -48,14 +50,15 @@ class MainFragment : Fragment() {
                 navOptions
             )
 
-           // authNavController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
+            // authNavController.navigate(R.id.action_mainFragment_to_chooseRecipientFragment)
         }
 
-
+        // View balance
         view_balance_btn.setOnClickListener {
             navController.navigate(R.id.action_mainFragment_to_viewBalanceFragment)
         }
 
+        // Nav Drawer
         nav_drawer.setOnClickListener {
             Toast.makeText(activity, "Navigation Drawer coming soon", Toast.LENGTH_LONG).show()
         }

@@ -10,6 +10,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navgraphnesting.flow1.Flow1Screen1Fragment
+import kotlinx.android.synthetic.main.fragment_main.*
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -45,7 +46,14 @@ class MainFragmentTest{
             }
         }
 
+        // Check main fragment is in the view
         Espresso.onView(ViewMatchers.withId(R.id.main_fragmentcontainer))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+
+        // Perform the click event
+        Espresso.onView(ViewMatchers.withId(R.id.view_transactions_btn)).perform(ViewActions.click())
+
+        // Verify the screen transition
+        assertEquals(navController.currentDestination?.id, R.id.viewTransactionFragment)
     }
 }
