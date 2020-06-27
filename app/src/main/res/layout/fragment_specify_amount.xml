@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             app:helperText="$0.00"
             app:errorEnabled="true"
+            android:hint="Enter Amount"
             android:layout_weight="60"
 
             >
