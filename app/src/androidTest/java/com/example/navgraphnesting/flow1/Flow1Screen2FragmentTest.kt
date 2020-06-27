@@ -4,10 +4,13 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewAssertion
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navigationcompodemo.R
 import org.junit.Assert.*
@@ -43,9 +46,26 @@ class Flow1Screen2FragmentTest {
             }
         }
 
+        onView(withId(R.id.flow1_screen2_container)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         onView(withId(R.id.txt_flow1_screen2_data))
             .check(ViewAssertions.matches(isDisplayed()))
+
+        // Click button to show the toast
+        onView(withId(R.id.btn_show_dialog)).perform(ViewActions.click())
+
+        // Verify dialog
+        onView(withText("Information")).check(ViewAssertions.matches(isDisplayed()))
+
+        onView(withText("This is Information Dialog")).check(ViewAssertions.matches(isDisplayed()))
+
+
+        // Click button on dialog
+        onView(withId(android.R.id.button1)).perform(click())
+
+        // Check the dialog not displayed
+        onView(withText("Information")).check(doesNotExist())
+        onView(withId(android.R.id.button1)).check(doesNotExist())
 
     }
 

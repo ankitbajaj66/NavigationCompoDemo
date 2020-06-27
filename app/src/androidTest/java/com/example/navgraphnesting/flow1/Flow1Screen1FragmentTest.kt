@@ -6,6 +6,7 @@ import androidx.navigation.Navigation
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navigationcompodemo.R
@@ -39,6 +40,21 @@ class Flow1Screen1FragmentTest {
         }
 
 
+        // Check for the main layout
+        onView(ViewMatchers.withId(R.id.flow1_screen1_container)).check(
+            ViewAssertions.matches(
+                ViewMatchers.isDisplayed()
+            )
+        )
+
+        // Check for image view Contents
+        onView(DrawableMatcher.withDrawable(R.drawable.ic_camera_alt_black_24dp)).check(
+            ViewAssertions.matches(
+                ViewMatchers.isDisplayed()
+            )
+        )
+
+        //
         // Verify that performing a click changes the NavController’s state
         onView(ViewMatchers.withId(R.id.btn_move_to_screen2)).perform(click())
         // assertEquals(navController.currentDestination?.id, R.id.flow1Screen2Fragment)
