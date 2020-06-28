@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.fragment_flow1_screen2.view.*
 /**
  * A simple [Fragment] subclass.
  */
-class Flow1Screen2Fragment : Fragment() {
-
+class Flow1Screen2Fragment : Fragment(), MyInputDialog.MyInputDialogListener {
     lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +41,27 @@ class Flow1Screen2Fragment : Fragment() {
         btn_show_dialog.setOnClickListener {
             openDialog()
         }
+
+        btn_show_input_dialog.setOnClickListener {
+            showInputDialog()
+        }
     }
 
-    fun openDialog() {
+    private fun openDialog() {
         val myDialog = MyDialog()
-        myDialog.show(activity!!.supportFragmentManager, "My Dialog")
+        myDialog.show(this@Flow1Screen2Fragment.parentFragmentManager, "My_dialog")
     }
 
+    private fun showInputDialog() {
+        val myInputDialog = MyInputDialog()
+
+        // when we need to make fragment to fragment communication then we need to set the target fragment
+        myInputDialog.setTargetFragment(this@Flow1Screen2Fragment, 1)
+        myInputDialog.show(this@Flow1Screen2Fragment.parentFragmentManager, "My_input_dialog")
+
+    }
+
+    override fun applyText(userName: String) {
+        txt_flow1_screen2_data.text = "Entered User name is $userName"
+    }
 }

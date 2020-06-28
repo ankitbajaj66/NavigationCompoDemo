@@ -15,12 +15,8 @@ class MyDialog : AppCompatDialogFragment() {
       //  return super.onCreateDialog(savedInstanceState)
         val alertDialog = AlertDialog.Builder(activity)
         alertDialog.setTitle("Information").setMessage("This is Information Dialog")
-            .setPositiveButton("Ok", object : DialogInterface.OnClickListener {
-                override fun onClick(dialogInterface: DialogInterface?, i: Int) {
-                    dismiss()
-                }
-
-            })
+            .setPositiveButton("Ok"
+            ) { dialogInterface, i -> dismiss() }
 
         return alertDialog.create()
     }
