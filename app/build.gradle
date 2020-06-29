@@ -53,11 +53,11 @@ dependencies {
 //    implementation "com.google.android.material:material:$material_version"
 
 
-   /* // androidx.test
+    // androidx.test
     def androidx_test = "1.1.1"
     androidTestImplementation "androidx.test:runner:$androidx_test"
     androidTestImplementation "androidx.test:core:$androidx_test"
-    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"*/
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
 
     // androidx.fragment -- This is for launchFragmentInContainer
 
@@ -67,27 +67,31 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
+    // Fragment Factory classes to pass the data to fragment
+    def fragment_version = "1.2.0-rc01"
+    implementation "androidx.fragment:fragment:$fragment_version"
 
     // ====================================== Testing Dependancy =======================
     // Espresso
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    // navigation Testing
+    // Activity Scenario - To launch activity in isolation
+    androidTestImplementation "androidx.test:core:1.1.1"
+
+    // navigation Components
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
-    // Unit Test
+    // JUnit classes
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
 
-    // Espresso Intent Rule
+    // Espresso Intent Rule - Test Intent
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
 
-    // Fragment isolation Test
-    def fragment_version = "1.2.0-rc01" // must use for new factory stuff
+    // Fragment Scenario - launch fragment in isolation
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
-    implementation "androidx.fragment:fragment:$fragment_version"
 
-    // Mockk.io
+    // Mockk.io - new kotlin api to mock final class
     def mockk_version = "1.9.2"
     androidTestImplementation "io.mockk:mockk-android:$mockk_version"
 }

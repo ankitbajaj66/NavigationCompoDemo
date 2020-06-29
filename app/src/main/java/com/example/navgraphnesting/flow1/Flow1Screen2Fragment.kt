@@ -1,6 +1,7 @@
 package com.example.navgraphnesting.flow1
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,6 +50,7 @@ class Flow1Screen2Fragment : Fragment(), MyInputDialog.MyInputDialogListener {
 
     private fun openDialog() {
         val myDialog = MyDialog()
+//        myDialog.isCancelable = false
         myDialog.show(this@Flow1Screen2Fragment.parentFragmentManager, "My_dialog")
     }
 
@@ -58,7 +60,6 @@ class Flow1Screen2Fragment : Fragment(), MyInputDialog.MyInputDialogListener {
         // when we need to make fragment to fragment communication then we need to set the target fragment
         myInputDialog.setTargetFragment(this@Flow1Screen2Fragment, 1)
         myInputDialog.show(this@Flow1Screen2Fragment.parentFragmentManager, "My_input_dialog")
-
     }
 
     override fun applyText(userName: String) {

@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatDialogFragment
 import com.example.navigationcompodemo.R
-import kotlinx.android.synthetic.main.dialog_input_alert.*
 import kotlinx.android.synthetic.main.dialog_input_alert.view.*
 import java.lang.ClassCastException
 
@@ -23,21 +22,52 @@ class MyInputDialog : AppCompatDialogFragment() {
     var myInputDialogListener: MyInputDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val alertDialog = AlertDialog.Builder(activity)
+        val alertDialogBuilder = AlertDialog.Builder(activity)
 
         val layoutInflater = LayoutInflater.from(activity)
         val view = layoutInflater.inflate(R.layout.dialog_input_alert, null)
 
-        alertDialog.setView(view).setTitle("Enter Name")
+        alertDialogBuilder.setView(view).setTitle("Enter Name")
 
-        alertDialog.setPositiveButton("Done") { dialogInterface, i ->
-            // Take the input back to UI screen
-            dismiss()
-            myInputDialogListener?.applyText(view.txt_userName.text.toString())
+        isCancelable = false
+
+        view.btn_done.setOnClickListener {
+            if (view.txt_userName.text.toString() != null && view.txt_userName.text.toString() != ""
+            ) {
+                dismiss()
+                myInputDialogListener?.applyText(view.txt_userName.text.toString())
+            }
         }
 
-        alertDialog.setNegativeButton("Cancel") { dialogInterface, i -> dismiss() }
-        return alertDialog.create()
+        view.btn_cancel.setOnClickListener {
+            dismiss()
+            myInputDialogListener?.applyText("Cancelled")
+        }
+        /*alertDialogBuilder.setPositiveButton("Done", object : DialogInterface.OnClickListener {
+            override fun onClick(p0: DialogInterface?, p1: Int) {
+                if (view.txt_userName.text.toString() != null && view.txt_userName.text.toString() != ""
+                ) {
+                    dismiss()
+                    myInputDialogListener?.applyText(view.txt_userName.text.toString())
+                }
+            }
+        })
+
+        alertDialogBuilder.setNegativeButton("Cancel") { dialogInterface, i ->
+            //            dismiss()
+            myInputDialogListener?.applyText("Cancelled")
+        }*/
+
+        val alertDialog = alertDialogBuilder.create()
+
+        /* alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+             if (view.txt_userName.text.toString() != null && view.txt_userName.text.toString() != ""
+             ) {
+                 dismiss()
+                 myInputDialogListener?.applyText(view.txt_userName.text.toString())
+             }
+         }*/
+        return alertDialog
 
     }
 

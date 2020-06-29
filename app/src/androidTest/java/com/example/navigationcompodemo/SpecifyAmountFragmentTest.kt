@@ -5,7 +5,6 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
@@ -15,9 +14,6 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navgraphnesting.flow1.Flow1Screen1Fragment
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.android.synthetic.main.fragment_specify_amount.*
-import org.junit.Assert.*
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.math.BigDecimal
@@ -64,9 +60,10 @@ class SpecifyAmountFragmentTest {
         Espresso.onView(ViewMatchers.withId(R.id.send_btn)).perform(ViewActions.click())
 
         val money = Money(BigDecimal("10"))
-        val action = SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(recipient, money)
+        val action =
+            SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(recipient, money)
 
-//        val action = SpecifyAmountFragmentDirections.actionSpecifyAmountFragmentToConfirmationFragment(recipientData, money)
+        // Verifying Navigation
         verify(exactly = 1) { navController.navigate(action) }
 
 

@@ -28,13 +28,6 @@ class MainFragmentTest{
     @Test
     fun test_MainFragmentVisible() {
 
-        //val scenario = launchFragmentInContainer<MainFragment>()
-
-        //  Create a TestNavHostController
-//        val navController = TestNavHostController(
-//            ApplicationProvider.getApplicationContext())
-//        navController.setGraph(R.navigation.nav_graph)
-
         val navController = mockk<NavController>(relaxed = true)
 
         val scenario = launchFragmentInContainer {
