@@ -34,8 +34,16 @@ open class Flow1Screen1Fragment : Fragment() {
 
 
         btn_move_to_screen2.setOnClickListener {
-            val directions = Flow1Screen1FragmentDirections.actionFlow1Screen1FragmentToFlow1Screen2Fragment2("Ankit")
+            val directions =
+                Flow1Screen1FragmentDirections.actionFlow1Screen1FragmentToFlow1Screen2Fragment2("Ankit")
 //            navController.navigate(R.id.action_flow1Screen1Fragment_to_flow1Screen2Fragment2)
+            navController.navigate(directions)
+        }
+
+        btn_show_movielist.setOnClickListener {
+
+            val directions =
+                Flow1Screen1FragmentDirections.actionFlow1Screen1FragmentToMovieListFragment()
             navController.navigate(directions)
         }
     }
