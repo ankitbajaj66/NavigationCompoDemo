@@ -4,9 +4,6 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.espresso.Espresso
-import androidx.test.espresso.ViewAction
-import androidx.test.espresso.ViewAssertion
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -15,8 +12,6 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.navigationcompodemo.R
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.android.synthetic.main.fragment_movie_list.*
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -52,15 +47,20 @@ class MovieListFragmentTest {
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
 
-
         val directions =
             MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment2(1)
-
+//
         //  Click on List Item
-        Espresso.onView(ViewMatchers.withId(R.id.recycler_movie_list)).perform(RecyclerViewActions.actionOnItemAtPosition<MovieListRecyclerView.MovieViewHolder>(1, click()))
+        Espresso.onView(ViewMatchers.withId(R.id.recycler_movie_list)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<MovieListRecyclerView.MovieViewHolder>(
+                1,
+                click()
+            )
+        )
+
+        // Verify the fragment
         verify(exactly = 1) { navController.navigate(directions) }
     }
-
 
 
 }

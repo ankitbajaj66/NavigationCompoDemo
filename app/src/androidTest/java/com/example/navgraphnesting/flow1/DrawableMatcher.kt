@@ -1,12 +1,9 @@
 package com.example.navgraphnesting.flow1
 
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import org.hamcrest.Description
 import org.hamcrest.Matcher

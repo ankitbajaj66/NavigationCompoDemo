@@ -20,7 +20,6 @@ import com.example.navigationcompodemo.MainActivity
 import com.example.navigationcompodemo.R
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.Matcher
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

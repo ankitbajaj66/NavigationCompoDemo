@@ -23,7 +23,7 @@ class MovieDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        movieId = MovieDetailFragmentArgs.fromBundle(arguments!!).movieId
+        movieId = MovieDetailFragmentArgs.fromBundle(requireArguments()).movieId
 
     }
 

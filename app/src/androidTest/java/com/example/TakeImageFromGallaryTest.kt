@@ -20,7 +20,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.navigationcompodemo.R
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

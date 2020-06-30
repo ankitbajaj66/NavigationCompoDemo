@@ -3,13 +3,12 @@ package com.example
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.navigationcompodemo.R
 import kotlinx.android.synthetic.main.activity_camera_image_capture.*
-import kotlinx.android.synthetic.main.activity_take_image_from_gallary.*
 import kotlinx.android.synthetic.main.activity_take_image_from_gallary.image
 
 const val REQUEST_IMAGE_CAPTURE = 1234
