@@ -17,6 +17,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -26,6 +27,9 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest {
 
+    /*
+    Instead of doing this, we can have our custom rule, so that we no need to write this again and again in each test class
+    instead we will simply use our rule.
     @Before
     fun registerIdlingResource() {
         IdlingRegistry.getInstance().register(EspressoIdealingResource.countingIdlingResource)
@@ -34,7 +38,10 @@ class MovieListFragmentTest {
     @After
     fun unRegisterIdlingResource() {
         IdlingRegistry.getInstance().unregister(EspressoIdealingResource.countingIdlingResource)
-    }
+    }*/
+
+    @get:Rule
+    val espressoIdealingResourceRule = EspressoIdealingResourceRule()
 
     @Test
     fun test_launch_MovieListFragment() {
