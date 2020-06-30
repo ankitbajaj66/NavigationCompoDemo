@@ -39,9 +39,11 @@ class MovieListFragment : Fragment() {
             FakeMovieData.movies.toList(),
             object : MovieListRecyclerView.Interaction {
                 override fun onItemSelected(position: Int, item: Movie) {
-                    val directions = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment2(position)
+                    val directions =
+                        MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment2(
+                            position
+                        )
                     navController.navigate(directions)
-//                    Toast.makeText(activity, "Select Item pos: $position", Toast.LENGTH_LONG).show()
                 }
 
             })

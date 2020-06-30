@@ -77,6 +77,7 @@ dependencies {
     // ====================================== Testing Dependancy =======================
     // Espresso
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.0"
 
     // Activity Scenario - To launch activity in isolation
     androidTestImplementation "androidx.test:core:1.1.1"
