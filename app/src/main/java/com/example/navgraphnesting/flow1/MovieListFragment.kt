@@ -12,7 +12,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.navigationcompodemo.R
+import com.example.util.EspressoIdealingResource
 import kotlinx.android.synthetic.main.fragment_movie_list.*
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -35,21 +41,35 @@ class MovieListFragment : Fragment() {
 
         navController = findNavController()
 
-        val movieListAdapter = MovieListRecyclerView(
-            FakeMovieData.movies.toList(),
-            object : MovieListRecyclerView.Interaction {
-                override fun onItemSelected(position: Int, item: Movie) {
-                    val directions =
-                        MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment2(
-                            position
-                        )
-                    navController.navigate(directions)
-                }
+        EspressoIdealingResource.increment()
+        progressBar.visibility = View.VISIBLE
+        val job = GlobalScope.launch(IO) {
+            delay(2000)
+        }
 
-            })
-        val layoutManager = LinearLayoutManager(activity)
+        job.invokeOnCompletion {
+            GlobalScope.launch(Main) {
+                progressBar.visibility = View.GONE
+                val movieListAdapter = MovieListRecyclerView(
+                    FakeMovieData.movies.toList(),
+                    object : MovieListRecyclerView.Interaction {
+                        override fun onItemSelected(position: Int, item: Movie) {
+                            val directions =
+                                MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment2(
+                                    position
+                                )
+                            navController.navigate(directions)
+                        }
+                    })
+                val layoutManager = LinearLayoutManager(activity)
 
-        recycler_movie_list.layoutManager = layoutManager
-        recycler_movie_list.adapter = movieListAdapter
+                recycler_movie_list.layoutManager = layoutManager
+                recycler_movie_list.adapter = movieListAdapter
+                EspressoIdealingResource.decrement()
+
+            }
+
+        }
+
     }
 }
