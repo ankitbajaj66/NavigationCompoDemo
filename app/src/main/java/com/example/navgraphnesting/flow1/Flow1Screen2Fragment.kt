@@ -17,14 +17,7 @@ import kotlinx.android.synthetic.main.fragment_flow1_screen2.view.*
  * A simple [Fragment] subclass.
  */
 class Flow1Screen2Fragment : Fragment(), MyInputDialog.MyInputDialogListener {
-    lateinit var name: String
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        name = Flow1Screen2FragmentArgs.fromBundle(requireArguments()).name
-
-    }
+    val name: String by lazy { Flow1Screen2FragmentArgs.fromBundle(requireArguments()).name }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

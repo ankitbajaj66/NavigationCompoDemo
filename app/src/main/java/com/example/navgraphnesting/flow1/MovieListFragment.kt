@@ -61,7 +61,7 @@ class MovieListFragment : Fragment() {
                             navController.navigate(directions)
                         }
                     })
-                val layoutManager = LinearLayoutManager(activity)
+                val layoutManager = LinearLayoutManager(activity!!)
 
                 recycler_movie_list.layoutManager = layoutManager
                 recycler_movie_list.adapter = movieListAdapter
